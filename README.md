@@ -8,6 +8,8 @@ rather than those of the generated CSS.
 **Currently FireSass only works with the development version of Sass,
 available from [GitHub](http://github.com/nex3/haml).**
 
+![Screenshot](http://github.com/nex3/firesass/raw/master/skin/screenshot.png)
+
 ## Usage
 
 First, [install FireSass](https://addons.mozilla.org/en-US/firefox/addon/103988).
