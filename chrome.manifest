@@ -1,0 +1,4 @@
+content     firesass    chrome/content/
+content     firesass    chrome/content/ contentaccessible=yes
+
+skin    firesass      classic/1.0     skin/
