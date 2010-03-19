@@ -1,4 +1,6 @@
 content     firesass    chrome/content/
 content     firesass    chrome/content/ contentaccessible=yes
 
+overlay chrome://firebug/content/firebugOverlay.xul chrome://firesass/content/firesass.xul
+
 skin    firesass      classic/1.0     skin/
