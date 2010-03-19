@@ -1,3 +1,5 @@
+default: package
+
 package:
 	mkdir -p pkg
 	rm -f pkg/firesass-`cat VERSION`.xpi
