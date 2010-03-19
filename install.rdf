@@ -5,7 +5,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="firesass@sass-lang.com"
                    em:name="FireSass for Firebug"
-                   em:version="0.0.0"
+                   em:version="0.0.1"
                    em:creator="Nathan Weizenbaum"
                    em:description="Reports Sass line numbers when inspecting CSS with Firebug"
                    em:homepageURL="http://sass-lang.com/firesass.html"
