@@ -7,7 +7,7 @@
                    em:name="FireSass for Firebug"
                    em:version="0.0.1"
                    em:creator="Nathan Weizenbaum"
-                   em:description="Reports Sass line numbers when inspecting CSS with Firebug"
+                   em:description="FireSass allows Firebug to display the original Sass filename and line number of Sass-generated CSS styles."
                    em:homepageURL="http://github.com/nex3/firesass"
                    em:iconURL="chrome://firesass/skin/logo.png">
     <em:targetApplication RDF:resource="rdf:#$NXdse3"/>
