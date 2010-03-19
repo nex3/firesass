@@ -10,7 +10,7 @@ available from [GitHub](http://github.com/nex3/haml).**
 
 ## Usage
 
-First, install FireSass from [the Sass website](http://sass-lang.com/firesass.html).
+First, [install FireSass](https://addons.mozilla.org/en-US/firefox/addon/103988).
 Second, enable Sass's `:debug_info` option.
 If you're using Sass with a Ruby web framework,
 you probably want to do:

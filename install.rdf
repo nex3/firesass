@@ -8,7 +8,7 @@
                    em:version="0.0.1"
                    em:creator="Nathan Weizenbaum"
                    em:description="Reports Sass line numbers when inspecting CSS with Firebug"
-                   em:homepageURL="http://sass-lang.com/firesass.html"
+                   em:homepageURL="http://github.com/nex3/firesass"
                    em:iconURL="chrome://firesass/skin/logo.png">
     <em:targetApplication RDF:resource="rdf:#$NXdse3"/>
   </RDF:Description>
