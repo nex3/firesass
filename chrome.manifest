@@ -3,4 +3,6 @@ content     firesass    chrome/content/ contentaccessible=yes
 
 overlay chrome://firebug/content/firebugOverlay.xul chrome://firesass/content/firesass.xul
 
+locale  firesass      en-US   chrome/locale/en-US/
+
 skin    firesass      classic/1.0     skin/

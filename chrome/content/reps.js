@@ -1,4 +1,8 @@
 FBL.ns(function() { with (FBL) {
+    var stringBundle = document.getElementById("strings");
+
+    var eps = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
+        .getService(Ci.nsIExternalProtocolService);
     var sl = Firebug.getRep(new FBL.SourceLink());
 
     function cacheSassDebugInfo(sourceLink) {
@@ -65,5 +69,29 @@ FBL.ns(function() { with (FBL) {
     sl.getTooltip = function(sourceLink)
     {
         return decodeURI(sourceLink.sassDebugInfo["filename"] || sourceLink.href);
+    };
+
+    var oldGetContextMenuItems = sl.getContextMenuItems;
+    sl.getContextMenuItems = function(sourceLink, target, context) {
+        var items = oldGetContextMenuItems(sourceLink, target, context);
+
+        if (eps.externalProtocolHandlerExists("txmt") &&
+            sourceLink.sassDebugInfo["filename"])
+        {
+            items.push("-");
+            items.push({label: stringBundle.getString("OpenInTextmate"), command: bindFixed(this.openInTextmate, this, sourceLink)})
+        }
+
+        return items;
+    };
+
+    sl.openInTextmate = function(sourceLink) {
+        var url = "txmt://open?";
+        url += "url=" + encodeURIComponent(sourceLink.sassDebugInfo["filename"]);
+
+        if (sourceLink.sassDebugInfo["line"])
+            url += "&line=" + sourceLink.sassDebugInfo["line"];
+
+        window.location = url;
     };
 }});
