@@ -1,4 +1,13 @@
 FBL.ns(function() { with (FBL) {
+    // A map of editor protocols to their string names.
+    // Each of these should work with the format "protocol://open?url=%s&line=%s".
+    // They should also each have localized strings.
+    const editorProtocols = {
+        txmt: "Textmate",
+        mvim: "MacVim",
+        emacs: "Emacs"
+    };
+
     var stringBundle = document.getElementById("strings");
 
     var eps = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
@@ -75,18 +84,32 @@ FBL.ns(function() { with (FBL) {
     sl.getContextMenuItems = function(sourceLink, target, context) {
         var items = oldGetContextMenuItems(sourceLink, target, context);
 
-        if (eps.externalProtocolHandlerExists("txmt") &&
-            sourceLink.sassDebugInfo["filename"])
+        if (!sourceLink.sassDebugInfo["filename"])
+            return items;
+
+        var hasDivider = false;
+        for (var protocol in editorProtocols)
         {
-            items.push("-");
-            items.push({label: stringBundle.getString("OpenInTextmate"), command: bindFixed(this.openInTextmate, this, sourceLink)})
+            if (!eps.externalProtocolHandlerExists(protocol))
+                continue;
+
+            if (!hasDivider)
+            {
+                items.push("-");
+                hasDivider = true;
+            }
+
+            items.push({
+                label: stringBundle.getString("OpenIn" + editorProtocols[protocol]),
+                command: bindFixed(this.openInEditor, this, protocol, sourceLink)
+            });
         }
 
         return items;
     };
 
-    sl.openInTextmate = function(sourceLink) {
-        var url = "txmt://open?";
+    sl.openInEditor = function(protocol, sourceLink) {
+        var url = protocol + "://open?";
         url += "url=" + encodeURIComponent(sourceLink.sassDebugInfo["filename"]);
 
         if (sourceLink.sassDebugInfo["line"])
