@@ -5,9 +5,6 @@ that makes Firebug display the Sass filenames and line numbers
 of Sass-generated CSS styles
 rather than those of the generated CSS.
 
-**Currently FireSass only works with the development version of Sass,
-available from [GitHub](http://github.com/nex3/haml).**
-
 ![Screenshot](http://github.com/nex3/firesass/raw/master/skin/screenshot.png)
 
 ## Usage
@@ -28,6 +25,8 @@ Finally, delete all the existing CSS files
 so that they'll be regenerated.
 
 ## Compatibility
+
+FireSass requires Sass 3.0 or later.
 
 FireSass should work with all versions of Firefox after and including 3.0,
 and all FireBug versions 1.4 and 1.5.
