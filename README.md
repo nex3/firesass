@@ -19,6 +19,12 @@ you probably want to do:
 Add this to `config/environment.rb` in Rails,
 or `config.ru` in other Ruby frameworks.
 
+With Compass with Ruby On Rails, you probably want to do
+
+    sass_options = {:debug_info => true}
+
+Add this to /config/compass.rb
+
 If you're using Sass from the command line,
 just pass in the `--debug-info` flag.
 Finally, delete all the existing CSS files
