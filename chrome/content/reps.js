@@ -8,7 +8,7 @@ FBL.ns(function() { with (FBL) {
         emacs: "Emacs"
     };
 
-    var stringBundle = document.getElementById("strings");
+    var stringBundle = document.getElementById("firesass-strings");
 
     var eps = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
         .getService(Ci.nsIExternalProtocolService);
