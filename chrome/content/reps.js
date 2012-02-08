@@ -11,7 +11,7 @@ FBL.ns(function() { with (FBL) {
     var stringBundle = document.getElementById("firesass-strings");
 
     var eps = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
-        .getService(Ci.nsIExternalProtocolService);
+        .getService(Components.interfaces.nsIExternalProtocolService);
     var sl = Firebug.getRep(new FBL.SourceLink());
 
     function cacheSassDebugInfo(sourceLink) {
