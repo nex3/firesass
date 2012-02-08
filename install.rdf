@@ -5,7 +5,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="firesass@sass-lang.com"
                    em:name="FireSass for Firebug"
-                   em:version="0.0.8"
+                   em:version="0.0.9"
                    em:creator="Nathan Weizenbaum"
                    em:description="FireSass allows Firebug to display the original Sass filename and line number of Sass-generated CSS styles."
                    em:homepageURL="http://github.com/nex3/firesass"
@@ -15,5 +15,5 @@
   <RDF:Description RDF:about="rdf:#$NXdse3"
                    em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
                    em:minVersion="3.0"
-                   em:maxVersion="9.*" />
+                   em:maxVersion="11.*" />
 </RDF:RDF>
