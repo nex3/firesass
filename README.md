@@ -11,10 +11,15 @@ rather than those of the generated CSS.
 
 First, [install FireSass](https://addons.mozilla.org/en-US/firefox/addon/103988).
 Second, enable Sass's `:debug_info` option.
-If you're using Sass with a Ruby web framework,
+If you're using Sass with a Ruby web framework, depending on the version,
 you probably want to do:
 
+    config.sass.debug_info = true
+    
+    for Rails 3.2, or for earlier versions of Rails
+
     Sass::Plugin.options[:debug_info] = true
+
 
 Add this to `config/environment.rb` in Rails,
 or `config.ru` in other Ruby frameworks.
