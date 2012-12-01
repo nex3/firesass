@@ -63,8 +63,28 @@ FBL.ns(function() { with (FBL) {
             
         }
 
-        sourceLink.sassDebugInfo = sourceLink.object.sassDebugInfo || {};
-        return;
+            // We only care about media rules.
+            if (mediaRule.type === CSSRule.MEDIA_RULE) {
+
+                // If this is a 'regular' mediaquery, dive in and parse its internal rules.
+                if (mediaRule.media.mediaText !== "-sass-debug-info") {
+                    parseCssRules(mediaRule.cssRules);
+                    continue;
+                };
+
+                // If this is a firesass mediaquery and the next rule is a style rule, get the debug info.
+                if ( mediaRule.media.mediaText === "-sass-debug-info" && styleRule.type === CSSRule.STYLE_RULE ) {
+
+                    styleRule.sassDebugInfo = {};
+
+                    for (var j=0; j<mediaRule.cssRules.length; j++)
+                    {
+                        styleRule.sassDebugInfo[mediaRule.cssRules[j].selectorText] =
+                            mediaRule.cssRules[j].style.getPropertyValue("font-family");
+                    }
+                }
+            };
+        }
     }
 
     sl.getSourceLinkTitle = function(sourceLink)
