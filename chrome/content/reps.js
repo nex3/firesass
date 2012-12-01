@@ -21,47 +21,17 @@ FBL.ns(function() { with (FBL) {
         }
 
         var rules = sourceLink.object.parentStyleSheet.cssRules;
-        for(var i=0; i<rules.length-1; i++)
-        {
-            
-            var styleRule = rules[i+1];
-            var mediaRule = rules[i];
-            if (mediaRule.type != CSSRule.MEDIA_RULE) continue;
-            if (styleRule.type != CSSRule.STYLE_RULE){
-                if (mediaRule.cssRules[0].type === CSSRule.MEDIA_RULE){
-                    for(var i2=0; i2<mediaRule.cssRules.length-1; i2++)
-                    {
-                        var styleRule2 = mediaRule.cssRules[i2+1];
-                        var mediaRule2 = mediaRule.cssRules[i2];
-                        if (mediaRule2.type != CSSRule.MEDIA_RULE) continue;
-                        if (styleRule2.type != CSSRule.STYLE_RULE)continue;
-                        
-                        styleRule2.sassDebugInfo = {};
-                        
-                        if (mediaRule2.media.mediaText != "-sass-debug-info") continue;
+        parseCssRules(rules);
 
-                        for (var j2=0; j2<mediaRule2.cssRules.length; j2++)
-                        {
-                            styleRule2.sassDebugInfo[mediaRule2.cssRules[j2].selectorText] =
-                                mediaRule2.cssRules[j2].style.getPropertyValue("font-family");
-                        }
-                        
-                    }
-                }else{
-                    continue;
-                }
-            }
-            styleRule.sassDebugInfo = {};
-            
-            if (mediaRule.media.mediaText != "-sass-debug-info") continue;
+        sourceLink.sassDebugInfo = sourceLink.object.sassDebugInfo || {};
+        return;
+    }
 
-            for (var j=0; j<mediaRule.cssRules.length; j++)
-            {
-                styleRule.sassDebugInfo[mediaRule.cssRules[j].selectorText] =
-                    mediaRule.cssRules[j].style.getPropertyValue("font-family");
-            }
-            
-        }
+    function parseCssRules(rules) {
+
+        for(var i=0; i<rules.length; i++) {
+            var mediaRule = rules[i],
+                styleRule = rules[i+1];
 
             // We only care about media rules.
             if (mediaRule.type === CSSRule.MEDIA_RULE) {
