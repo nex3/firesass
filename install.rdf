@@ -4,6 +4,7 @@
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="firesass@sass-lang.com"
+                   em:type="2"
                    em:name="FireSass for Firebug"
                    em:version="0.0.12"
                    em:creator="Nathan Weizenbaum"
